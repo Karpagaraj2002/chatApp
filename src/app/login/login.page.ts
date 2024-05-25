@@ -1,3 +1,4 @@
+import { AuthService } from './../service/auth.service';
 import { Router } from '@angular/router';
 import { faShower } from './../../../node_modules/@fortawesome/free-solid-svg-icons/faShower.d';
 import { Component, OnInit } from '@angular/core';
@@ -12,10 +13,12 @@ export class LoginPage implements OnInit {
   Eye: any = faEye;
   EyeSlash = faEyeSlash;
   show: boolean = false;
+  model:any={}
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private Auth:AuthService) {}
 
   ngOnInit() {}
+
 
   password() {
     this.show = !this.show;
@@ -25,6 +28,9 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/login/forget-password']);
   }
   onSubmit() {
-    console.log('submitted');
+    const token = 'dummy-token';  // Replace with actual token
+    this.Auth.login(token);
+    sessionStorage.setItem('user',JSON.stringify(this.model))
+    this.router.navigate(['/pages']);
   }
 }

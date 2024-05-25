@@ -3,21 +3,14 @@
     <h1>Sign-IN</h1>
     <form (ngSubmit)="onSubmit()" #formPage="ngForm">
       <div class="form-group px-3 mt-3">
-        <input type="text" class="form-control" placeholder="UserName" />
+        <input type="text" class="form-control" name="userName" placeholder="UserName" [(ngModel)]="model.userName" />
       </div>
       <div class="form-group px-3 my-3 pass">
-        <input
-          [type]="!show? 'password' : 'text' "
-          class="form-control"
-          placeholder="Password"
-        />
+        <input [type]="!show? 'password' : 'text' " class="form-control" placeholder="Password"
+          [(ngModel)]="model.password" name="password" />
         <div class="icon">
           <fa-icon *ngIf="!show" (click)="password()" [icon]="Eye"></fa-icon>
-          <fa-icon
-            *ngIf="show"
-            (click)="password()"
-            [icon]="EyeSlash"
-          ></fa-icon>
+          <fa-icon *ngIf="show" (click)="password()" [icon]="EyeSlash"></fa-icon>
         </div>
       </div>
       <div class="col-12 mx-3">
@@ -26,9 +19,7 @@
             <ion-checkbox labelPlacement="end">Remember Me</ion-checkbox>
           </div>
           <div class="col-5 text-end">
-            <span style="color: #0d6efd" (click)="route()"
-              >Forget Password?</span
-            >
+            <span style="color: #0d6efd" (click)="route()">Forget Password?</span>
           </div>
         </div>
       </div>
