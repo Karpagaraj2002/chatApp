@@ -7,19 +7,19 @@ import { AuthService } from './service/auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  user:any={}
+  user: any = {}
   public appPages = [
     { title: 'chat', url: '/pages/chat', icon: 'chatbubble-ellipses-outline' },
     { title: 'setting', url: '/pages/setting', icon: 'settings-outline' },
   ];
-  constructor(private router: Router,private auth:AuthService) {}
+  constructor(private router: Router, public auth: AuthService) { }
 
   ngOnInit(): void {
-    // this.user = JSON.parse(sessionStorage.getItem('user')||'{}')
+    this.user = JSON.parse(sessionStorage.getItem('user') || '{}')
   }
 
-  ionViewCanEnter(){
-    this.user = JSON.parse(sessionStorage.getItem('user')||'{}')
+  ionViewCanEnter() {
+    this.user = JSON.parse(sessionStorage.getItem('user') || '{}')
   }
 
   route(url: any) {
